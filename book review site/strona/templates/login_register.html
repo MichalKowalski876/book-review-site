@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>My page :)</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<form action="/auth" method="POST">
+
+    Username
+    <br>
+    <input type="text" name="username">
+
+    <br>
+
+    Password
+    <br>
+    <input type="password" name="password">
+    <br><br>
+    <input type="submit">
+</form>
+<br><br><br>
+<h1>Register</h1>
+
+<form action="/register" method="POST">
+
+    Username
+    <br>
+    <input type="text" name="register_username" required>
+
+    <br>
+
+    Password
+    <br>
+    <input type="password" name="register_password" required>
+    <br>
+    Confirm password
+    <br>
+    <input type="password" name="register_confirm_password">
+    <br><br>
+    <input type="submit">
+</form>
+</body>
+<br>
+<a href="/">Return to main page</a>
+</html>

@@ -1,0 +1,17 @@
+Projekt jest aplikacją funkcjonującą jako platforma do przeglądania, oceniania książek z możliwością dodania nowych do
+istniejących już na stronie. Uzytkownicy mają możliwość przejrzenia strony jak i wyszukania wybranej książki.
+Dodatkowo, użytkownicy mogą wysyłać prośby o usunięcie czy dodanie wybranej przez nich ksiazki, przez zglaszanie lub
+wypełnienie formularza. Osoby uprawnione moga akeptowac prosby uzytkownikow.
+
+Wymagania:
+Python
+Minimalna wersja: 3.10.
+
+Instrukcja uruchomienia aplikacji:
+Należy zainstalowac zaleznosci uzywajac "pip install -r requirements.txt". Następnie, aby uruchomic
+aplikacje nalezy uzyc "python db_init.py", po czym 'python strona/app.py'. Do aplikacji mozna uzyskac dostep przez
+przegladarke internetowa pod adresem 'http://localhost:5000.'.
+
+Autor:
+Michal Kowalski
+michalkowalski876@gmail.com

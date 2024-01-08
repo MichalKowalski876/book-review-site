@@ -1,0 +1,11 @@
+CREATE TABLE "users"
+(
+    "id"       INTEGER PRIMARY KEY AUTOINCREMENT,
+    "username" TEXT    NOT NULL,
+    "password" TEXT    NOT NULL,
+    "admin" INTEGER
+);
+INSERT INTO "users"
+VALUES (NULL,'user0', 'scrypt:32768:8:1$C775R9fKLqEKxZ9A$f77f94c8b6862b06f6012174512dbcd4caac8de3ac5fe62a2216d664de81ead829cea428dcc849d5ae1499176ac750971b33ca65f07249ef6789c7aacf8c2704', 1),
+       (NULL, 'user1', 'scrypt:32768:8:1$9lsNeZfuh1Wunv2f$d15d14747701e8f22eefab16131fbe388d2593f7b57bad05fc543f5d90c5ac091f510a6ffae6d12228afb88be85dbcc6b285751bddb6a686d62596bccb98acec', 0),
+       (NULL, 'user2', 'scrypt:32768:8:1$BeK6KTC7QvX0N0Tb$2302c32d29408c780899bfc7478c7d6f8bcfc9825e6a543dfb28af44c836e62e02e2dd7833798e1fc3bed57153f46ad2fa680c6219ddd4dc3c2772caf48ae2d8', 0);

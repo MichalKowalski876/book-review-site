@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>My page :)</title>
+<h1>My page :)</h1>
+
+<h2>
+    {% if username %}
+    Hello {{username }}!
+    {% else %}
+    Hello!
+    {% endif %}
+</h2>
+
+
+<ul>
+    <li>
+        <form action="/search_results">
+            <input type="text" name="search_query">
+            <input type="submit">
+        </form>
+    </li>
+    <li><a href="/add_request">Request new book</a></li>
+    {% if username %}
+    <li><a href="/logout">Logout</a></li>
+    {% else %}
+    <li><a href="/login">Login or register</a></li>
+    {% endif %}
+
+</ul>
+
+<h2>Book list</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>author</th>
+        <th>year published</th>
+        <th>score</th>
+    </tr>
+    {% for i in items %}
+    <tr>
+        <th>{{ i.id }}</th>
+        <th>{{ i.name }}</th>
+        <th>{{ i.author }}</th>
+        <th>{{ i.year_published }}</th>
+        <th>{{ i.score }}</th>
+        <th>
+            <form action="/view/{{ i.id }}" method="post">
+                <input type="hidden" value="{{ i.id }}" name="id">
+                <input type="submit" value="view">
+            </form>
+        </th>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+
+</style>
+
+
+</html>

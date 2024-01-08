@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>My page :)</title>
+
+<h2>Book list</h2>
+<body>
+    <form action="/add" method="POST">
+        Name of the book:<br>
+        <input type="text" name="name" required>
+        <br><br>
+
+        Authors name:<br>
+        <input type="text" name="author" required>
+        <br><br>
+
+        Year published:<br>
+        <input type="number" name="year_published" required>
+        <br><br>
+
+        Cover(url link):<br>
+        <input type="text" name="cover" required>
+        <br><br>
+        <input type="submit">
+    </form><br>
+<a href="/">Return to main page</a>
+</body>
+
+<h2>Pending requests:</h2>
+<table>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>author</th>
+        <th>year published</th>
+        <th>score</th>
+        <th>status</th>
+    </tr>
+    {% for i in items %}
+    <tr>
+        <th>{{ i.id }}</th>
+        <th>{{ i.name }}</th>
+        <th>{{ i.author }}</th>
+        <th>{{ i.year_published }}</th>
+        <th>{{ i.score }}</th>
+        {% if i.status == 1 %}
+        <th>Add request</th>
+        {% elif i.status == 2 %}
+        <th>Delete request</th>
+        {% else %}
+        <th>File deleted</th>
+        {% endif %}
+
+        <th>
+            <form action="/view/{{ i.id }}" method="post">
+                <input type="hidden" value="{{ i.id }}" name="id">
+                <input type="submit" value="view">
+            </form>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    td, th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+
+</style>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>My page :)</title>
+<p>
+    '{{ item.name }}'<br>
+    By {{ item.author }}<br>
+    Publication date: {{ item.year_published }}<br>
+    Rating {{ item.score }}
+</p>
+<p>
+    <img src="{{ item.cover_url }}" width="350" height="525">
+</p>
+{% if active_session and not review %}
+<p>
+    {% if item.status != 1 %}
+<form action="/add_review" method="POST" >
+
+    <input type="radio" id="⭐⭐⭐⭐⭐" name="review" value="5" required>
+    <label for="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ </label>
+
+    <input type="radio" id="⭐⭐⭐⭐" name="review" value="4">
+    <label for="⭐⭐⭐⭐">⭐⭐⭐⭐ </label>
+
+
+    <input type="radio" id="⭐⭐⭐" name="review" value="3">
+    <label for="⭐⭐⭐">⭐⭐⭐ </label>
+
+
+    <input type="radio" id="⭐⭐" name="review" value="2">
+    <label for="⭐⭐">⭐⭐ </label>
+
+
+    <input type="radio" id="⭐" name="review" value="1" >
+    <label for="⭐">⭐ </label>
+
+    <form>
+        <input type="hidden" name="book_id" value="{{ item.id }}">
+        <input type="submit" value="Review">
+    </form>
+{% endif %}
+
+    {% endif %}
+</form>
+
+{% if item.status != 0 and admin %}
+
+{% if item.status != 0 and reports %}
+REPORTS:<br>
+{% for report in reports %}
+{{ report.desc }}<br>
+{% endfor %}
+{% endif %}
+
+<br>
+{% if item.status == 1 %}
+Add request
+{% else %}
+Del request
+{% endif %}
+
+<form action="/accept_change_status" method="post">
+    <input type="hidden" name="id" value="{{ item.id }}">
+    <input type="submit" value="Accept request">
+</form>
+
+<form action="/deny_change_status" method="post">
+    <input type="hidden" name="id" value="{{ item.id }}">
+    <input type="submit" value="Deny request">
+</form>
+{% endif %}
+
+{% if review %}
+You have rated this book {{ review.score }} ⭐
+{% endif %}
+
+{% if session %}
+<br><br>
+<form action="/report" method="POST">
+    <input type="hidden" value="{{ item.id }}" name="id">
+    <input type="submit" value="Report">
+</form>
+{% endif %}
+
+{% if not session %}
+Login to review the books<br>
+{% endif %}
+
+
+<br><a href="/">Return to main page</a>
+
+
+</html>
